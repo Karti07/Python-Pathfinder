@@ -6,7 +6,7 @@ This Python program is designed to find a path through mazes of varying complexi
 
 1. Place your maze files in the same directory as the program.
 2. Ensure your maze file follows the specified format (see Maze File Format).
-3. Run the program by executing the 'pathfinder.py' file in your IDE.
+3. Run the program by executing the 'python_pathfinder.py' file in your IDE.
 
 ## Maze File Format (test_maze.txt)
 
@@ -17,7 +17,7 @@ Each maze file should contain rows of integers separated by commas, with each ro
 - **5**: Current location (path)
 - **3**: Finish/exit point
 
-###Example
+### Example
 
 5, 0, 1, 1, 1, 1
 1, 0, 1, 0, 0, 0
