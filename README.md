@@ -19,11 +19,11 @@ Each maze file should contain rows of integers separated by commas, with each ro
 
 ## Example
 
-5, 0, 1, 1, 1, 1
-1, 0, 1, 0, 0, 0
-0, 0, 1, 0, 1, 0
-0, 1, 0, 0, 1, 0
-0, 0, 0, 1, 1, 3
+5, 0, 1, 1, 1, 1<br>
+1, 0, 1, 0, 0, 0<br>
+0, 0, 1, 0, 1, 0<br>
+0, 1, 0, 0, 1, 0<br>
+0, 0, 0, 1, 1, 3<br>
 
 **Output**
 
