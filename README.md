@@ -23,7 +23,7 @@ Each maze file should contain rows of integers separated by commas, with each ro
 1, 0, 1, 0, 0, 0<br>
 0, 0, 1, 0, 1, 0<br>
 0, 1, 0, 0, 1, 0<br>
-0, 0, 0, 1, 1, 3<br>`
+0, 0, 0, 1, 1, 3`<br>
 
 ### Output
 
