@@ -110,4 +110,6 @@ def main():
         print_solution(maze, path)
     else:
         print("No solution found")
-main()
+        
+if __name__ == "__main__":
+    main()
