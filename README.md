@@ -29,8 +29,8 @@ Each maze file should contain rows of integers separated by commas, with each ro
 
 The program will output the solution as a path of '5's in a grid, leaving the walls and finish point unchanged. Values are separated by a space.
 
-5 5 1 1 1 1<br>
-1 5 1 5 5 5<br>
-5 5 1 5 1 5<br>
-5 1 5 5 1 5<br>
-5 5 5 1 1 3<br>
+`5 5 1 1 1 1`<br>
+`1 5 1 5 5 5`<br>
+`5 5 1 5 1 5`<br>
+`5 1 5 5 1 5`<br>
+`5 5 5 1 1 3`<br>
