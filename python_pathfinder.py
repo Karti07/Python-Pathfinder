@@ -125,22 +125,31 @@ def create_graph(matrix):
 
     return graph
 
+# def create_graph(matrix):
+#     graph = {}
 
-# Example usage
-import networkx as nx
+#     rows, cols = len(matrix), len(matrix[0])
 
-# Create a graph (you can replace this with your own graph)
-G = nx.Graph()
-G.add_edge('A', 'B', weight=2)
-G.add_edge('B', 'C', weight=3)
-G.add_edge('C', 'D', weight=4)
-G.add_edge('D', 'E', weight=5)
+#     def is_valid(i, j):
+#         return 0 <= i < rows and 0 <= j < cols and matrix[i][j] != 1
 
-# Minimize the graph
-minimized_graph = minimize_graph(G)
+#     for i in range(rows):
+#         for j in range(cols):
+#             if matrix[i][j] != 1:
+#                 current_node = (i,j)  # Node description
+#                 neighbors = []
 
-# Print the resulting graph
-print(minimized_graph.edges(data=True))
+#                 # Check neighboring positions
+#                 for ni, nj in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
+#                     if is_valid(ni, nj):
+#                         neighbor = {}
+#                         neighbor_node = (ni,nj)  # Neighbor description
+#                         neighbor[neighbor_node] = 1  # Initialize weight to 1
+#                         neighbors.append(neighbor)
+
+#                 graph[current_node] = neighbors
+
+#     return graph
 
 
 def dijkstra(graph, start, end):
@@ -197,10 +206,6 @@ def main():
     else:
         print("No solution found")
  
-
-
-
-
 
 if __name__ == "__main__":
     main()
