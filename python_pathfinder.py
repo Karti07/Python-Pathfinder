@@ -1,3 +1,6 @@
+from collections import deque
+
+
 # This function reads in a maze from a file and returns it as a list of lists of integers.
 # Each integer corresponds to a different type of cell in the maze.
 # 0 = empty cell
@@ -101,15 +104,103 @@ def print_solution(maze, path):
                 print("0", end=" ")
         print()
 
+
+def create_graph(matrix):
+    graph = {}
+
+    rows, cols = len(matrix), len(matrix[0])
+
+    def is_valid(i, j):
+        return 0 <= i < rows and 0 <= j < cols and matrix[i][j] != 1
+
+    for i in range(rows):
+        for j in range(cols):
+            if matrix[i][j] != 1:
+                neighbors = []
+                # Check neighboring positions
+                for ni, nj in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
+                    if is_valid(ni, nj):
+                        neighbors.append((ni, nj))
+                graph[(i, j)] = neighbors
+
+    return graph
+
+
+# Example usage
+import networkx as nx
+
+# Create a graph (you can replace this with your own graph)
+G = nx.Graph()
+G.add_edge('A', 'B', weight=2)
+G.add_edge('B', 'C', weight=3)
+G.add_edge('C', 'D', weight=4)
+G.add_edge('D', 'E', weight=5)
+
+# Minimize the graph
+minimized_graph = minimize_graph(G)
+
+# Print the resulting graph
+print(minimized_graph.edges(data=True))
+
+
+def dijkstra(graph, start, end):
+    distances = {vertex: float('infinity') for vertex in graph}
+    distances[start] = 0
+    predecessors = {vertex: None for vertex in graph}
+
+    queue = deque([start])
+
+    while queue:
+        current_vertex = queue.popleft()
+        for neighbor in graph[current_vertex]:
+            if distances[neighbor] == float('infinity'):
+                distances[neighbor] = distances[current_vertex] + 1
+                predecessors[neighbor] = current_vertex
+                queue.append(neighbor)
+
+        # Early stopping if the destination is reached
+        if current_vertex == end:
+            break
+
+    # Reconstruct the path
+    path = []
+    current = end
+    while current is not None:
+        path.insert(0, current)
+        current = predecessors[current]
+
+    return {'distance': distances[end], 'path': path}
+
 def main():
     filename = "test_maze.txt"
     maze = load_maze(filename)
+
+    # Dijkstra's algorithm
+    print("\033[1;4;92mUsing Dijkstra's algorithm:\033[0m")
+    # Create the graph
+    graph = create_graph(maze)
+    start_vertex, end_vertex = find_start_and_end(maze)
+    result = dijkstra(graph, start_vertex, end_vertex)
+    if(result['distance'] == float('infinity')):
+        print("No solution found")
+    else:
+        print("Solution: ")
+        print_solution(maze, result['path'])
+    print("")
+
+    # BFS
+    print("\033[1;4;92mUsing BFS:\033[0m")
     path = solve_maze(maze)
     if path != None:
         print("Solution: ")
         print_solution(maze, path)
     else:
         print("No solution found")
-        
+ 
+
+
+
+
+
 if __name__ == "__main__":
     main()
